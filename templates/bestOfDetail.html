@@ -4,13 +4,23 @@
     <body>
         <div class="container">
             <h2>{{category}}</h2>
-
-            {% for bestOf in bestOfs%}
-                <label>{{bestOf}}: "??? Add Score Later"</label>
-                <button>Higher</button>
-                <button>Lower</button>
+            
+            {% for conversation in bestOfs%}
+                <div class="card">
+                    <div class="card-header">
+                    {{conversation}}
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">{{conversation}}</h5> -->
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <div class="card">
+                                <button type="button" class="btn btn-success">Better</button>
+                            <button type="button" class="btn btn-danger">Worse</button>                
+                        </div>
+                    </div>
+                </div>
                 <br/>
-            {% endfor %}        
+            {% endfor %}    
         </div>
     </body>
 </html>
