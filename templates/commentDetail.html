@@ -2,12 +2,14 @@
 {% block body %}
 <html lang="en">
     <body>
-        {% for comment in comments%}
-          <label>{{comment}}: "Add some score l8r"</label>
-          <button>I Found This Helpful</button>
-          <button>This Changed My Mind</button>
-          <br/>
-        {% endfor %}
+        <div class="container">
+            {% for comment in comments%}
+            <label>{{comment}}: "Add some score l8r"</label>
+            <button>I Found This Helpful</button>
+            <button>This Changed My Mind</button>
+            <br/>
+          {% endfor %}  
+        </div>
     </body>
 </html>
 {% endblock %}

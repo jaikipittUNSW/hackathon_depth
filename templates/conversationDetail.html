@@ -2,14 +2,16 @@
 {% block body %}
 <html lang="en">
     <body>
-        <h2>{{category}}</h2>
-
-        {% for conversation in conversations%}
-          <a href="{{ url_for('CommentDetail', category=category, conversation=conversation) }}">{{conversation}}: </a> <label>"??? Add Score Later"</label>
-          <button>I Found This Helpful</button>
-          <button>This Changed My Mind</button>
-          <br/>
-        {% endfor %}
+        <div class="container">
+            <h2>{{category}}</h2>
+            
+            {% for conversation in conversations%}
+              <a href="{{ url_for('CommentDetail', category=category, conversation=conversation) }}">{{conversation}}: </a> <label>"??? Add Score Later"</label>
+              <button type="button" class="btn btn-success">I Found This Helpful</button>
+              <button type="button" class="btn btn-danger">This Changed My Mind</button>
+              <br/>
+            {% endfor %}    
+        </div>
     </body>
 </html>
 {% endblock %}
