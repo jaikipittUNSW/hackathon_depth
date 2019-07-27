@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+<html lang="en">
+    <body>
+        <div class="container">
+            <h2>{{category}}</h2>
+            
+            {% for conversation in bestOfs%}
+                <div class="card">
+                    <div class="card-header">
+                    {{conversation}}
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">{{conversation}}</h5> -->
+                        <table>
+                            <tr>
+                                <td width=40%>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                </td>
+                                <td width=20%></td>
+                                <td width=40%>
+                                    <div>
+                                        <button type="button" class="btn btn-success">Better</button>
+                                        <button type="button" class="btn btn-danger">Worse</button>                
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+            {% endfor %}  
+        </div>
+    </body>
+</html>
+{% endblock %}
