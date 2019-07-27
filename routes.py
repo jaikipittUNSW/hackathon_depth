@@ -1,5 +1,7 @@
 from server import app, System
 from flask import render_template, request, redirect, url_for, abort
+from Comment import Comment
+from User import User
 
 @app.route('/', methods=["GET", "POST"])
 def home():
@@ -20,7 +22,15 @@ def ConversationDetail(category):
     conversations=["1","2","3"]
     return render_template("conversationDetail.html", category=category, conversations=conversations)
 
-@app.route('/conversations/<category>/<conversationID>', methods=["GET", "POST"])
-def CommentDetail(category, conversationID):
-    comments = System.getComments(conversationID)
+@app.route('/conversations/<category>/<conversation>', methods=["GET", "POST"])
+def CommentDetail(category, conversation):
+#    comments = System.getComments(conversation)
+    comments = list()
+    u = User("Jaiki", "password")
+    comments.append(Comment(0, u, "yeet"))
+    temp = Comment(1, u, "ya")
+    print(temp.addChildComment(1,Comment(2,u,"Hello World")))
+    temp.addChildComment(1,Comment(3,u,"Yep"))
+    comments.append(temp)
+    print(temp.getChildrenComments())
     return render_template("commentDetail.html", comments=comments)
