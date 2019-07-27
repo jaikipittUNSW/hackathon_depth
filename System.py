@@ -111,14 +111,14 @@ class System():
         pickle.dump(self, f)
         f.close()
 
-def updateYoAss():
-    f = open("system.pickle", "rb")
-    try:
-        sys = pickle.load(f)
-    except EOFError:
-        sys = System()
-    f.close()
-    return sys
+    def updateSystem(self):
+        f = open("system.pickle", "rb")
+        try:
+            sys = pickle.load(f)
+        except EOFError:
+            sys = System()
+        f.close()
+        return sys
 
 
 
