@@ -5,26 +5,53 @@ import Comment
 
 class System():
 
-    posts = null
-    users = null
-
     def __init__(self):
-        pass
+        self.posts = None
+        self.users = None
+        self.categories = {"Books": []}
+        self.postID = 0
 
-    def addNewUser(self):
-        pass
+    def makeNewPost(self, title, post, user):
+        post = Post(self.postID, titel, post, user)
+        self.postID++
+        return post
 
-    def addNewPost(self):
-        pass
+    def addNewUser(self, name, password):
+        self.users.append(User(name, password))
 
-    def commentOnPost(self):
-        pass
+    def addNewPost(self, title,  post, user, categories):
+        nPost = self.makeNewPost(title, post, user)
+        for category in categories:
+            self.categories[categories].append(nPost)
 
-    def commentOnCommnet(self):
-        pass
+    def commentOnPost(self, postID, comment, user):
+        self.commentOnPost(postID, 0, comment, user)
 
-    def getPost(self):
-        pass
+    def commentOnCommnet(self, postID, commentID comment, user):
+        for post in self.posts:
+            if (post.isPost(postID)):
+                post.addNewCommnets(commentID, comment, user)
+                break
 
-    def showPost(self):
-        pass
+    def getPost(self, id):
+        post = None
+        if (id < self.postID):
+            for posts in self.posts:
+                if posts.isPost(id):
+                    post = posts
+                    break
+        return post
+
+    def showPost(self, id):
+        for post in self.posts:
+            if post.isPost(id):
+                return post
+
+    def showCategoryPosts(self, categories):
+        return self.categories[categories]
+
+    def getAllPosts(self):
+        posts = []
+        for post in self.post:
+            posts.append(post.getPostval())
+        return posts
