@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+<html lang="en">
+    <body>
+        {% for comment in comments%}
+          <label>{{comment}}: "Add some score l8r"</label>
+          <button>I Found This Helpful</button>
+          <button>This Changed My Mind</button>
+          <br/>
+        {% endfor %}
+    </body>
+</html>
+{% endblock %}

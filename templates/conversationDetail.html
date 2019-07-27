@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+<html lang="en">
+    <body>
+        <h2>{{category}}</h2>
+
+        {% for conversation in conversations%}
+          <a href="{{ url_for('CommentDetail', category=category, conversation=conversation) }}">{{conversation}}: </a> <label>"??? Add Score Later"</label>
+          <button>I Found This Helpful</button>
+          <button>This Changed My Mind</button>
+          <br/>
+        {% endfor %}
+    </body>
+</html>
+{% endblock %}

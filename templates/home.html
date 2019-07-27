@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<html lang="en">
+    <body>
+        <h2>Best Of</h2>
+        {% for category in bestOfCategories%}
+            <a href="{{ url_for('BestOfDetail', subject=category) }}"><button>{{category}}</button></a>
+        {% endfor %}
+
+        <h2>Conversations</h2>
+        {% for category in categories%}
+            <a href="{{ url_for('ConversationDetail', category=category) }}"><button>{{category}}</button></a>
+        {% endfor %}
+    </body>
+</html>
+
+{% endblock %}
