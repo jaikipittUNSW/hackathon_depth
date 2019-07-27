@@ -8,7 +8,8 @@ class System():
     def __init__(self):
         self.posts = []
         self.users = []
-        self.categories = {"Books": []}
+        self.categories = {"Books": [], "Films": [], "News": [], "Sports": [],
+        "Arts": [], "History": []}
         self.postID = 0
 
     def makeNewPost(self, title, post, user):
