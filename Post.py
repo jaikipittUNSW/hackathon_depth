@@ -59,10 +59,24 @@ class Post():
         return self.user.getName()
 
     def addChange(self, user):
-        self.changeList.append(user)
+        if user not in self.changeList:
+            self.changeList.append(user)
+
+    def removeChange(self, user):
+        self.changeList.remove(user)
+
+    def changedUser(self, user):
+        return user in self.changeList
 
     def addUseful(self, user):
-        self.usefulList.append(user)
+        if user not in self.usefulList:
+            self.usefulList.append(user)
+
+    def removeUseful(self, user):
+        self.usefulList.remove(user)
+
+    def usefulUser(self, user):
+        return user in self.usefulList
 
     def getPostVal(self):
         return {"id": self.id, "ChangeMyMind": len(self.changeList), "FoundThisUseful": len(self.usefulList)}
