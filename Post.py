@@ -46,6 +46,9 @@ class Post():
                     break
         return comment
 
+    def getComments(self):
+        return self.comments
+
     def getText(self):
         return self.post
 

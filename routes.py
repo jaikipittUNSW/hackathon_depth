@@ -1,4 +1,4 @@
-from server import app, system
+from server import app, System
 from flask import render_template, request, redirect, url_for, abort
 
 @app.route('/', methods=["GET", "POST"])
@@ -16,11 +16,11 @@ def BestOfDetail(subject):
 
 @app.route('/conversations/<category>', methods=["GET", "POST"])
 def ConversationDetail(category):
-    conversations = ["yeet", "ya"]
-    categories = ["Sports", "Arts", "History", "Yoghurts"]
+    # conversations=showCategoryPosts(category)
+    conversations=["1","2","3"]
     return render_template("conversationDetail.html", category=category, conversations=conversations)
 
-@app.route('/conversations/<category>/<conversation>', methods=["GET", "POST"])
-def CommentDetail(category, conversation):
-    comments = ["yeet", "ya"]
+@app.route('/conversations/<category>/<conversationID>', methods=["GET", "POST"])
+def CommentDetail(category, conversationID):
+    comments = System.getComments(conversationID)
     return render_template("commentDetail.html", comments=comments)

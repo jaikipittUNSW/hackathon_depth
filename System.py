@@ -36,6 +36,11 @@ class System():
                 post.addComments(commentID, comment, user)
                 break
 
+    def getComments(self, postID):
+        post = getPost(postID)
+
+        return post.getComments()
+
     def getPost(self, id):
         post = None
         if (id < self.postID):
