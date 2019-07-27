@@ -9,7 +9,7 @@ class System():
     def __init__(self):
         self.posts = []
         self.users = []
-        self.categories = {"Books": [], "Films": [], "News": [], "Sports": [],
+        self.categories = {"_Books": [], "_Films": [], "_News": [], "Sports": [],
         "Arts": [], "History": []}
         self.postID = 0
 
@@ -19,6 +19,24 @@ class System():
         self.postID +=1
         self.save()
         return post
+
+    def getCategories(self):
+        res = list()
+        for category in self.categories:
+            if (category[0] != "_"):
+                res.append(category)
+
+        return res
+
+    def getBestOfCategories(self):
+        res = list()
+        for category in self.categories:
+            if (category[0] == "_"):
+                temp = category
+                temp = temp.replace("_","")
+                res.append(temp)
+
+        return res
 
     def addNewUser(self, name, password):
         self = updateYoAss()
