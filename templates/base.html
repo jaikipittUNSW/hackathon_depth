@@ -8,10 +8,14 @@
 </head>
 
 <body>
-<h1>Depth</h1>
-<!-- Tab Menu -->
-<a href="{{ url_for('home') }}">Home</a><space></space>
-<br>
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+        <!-- <img src="/whale.jp" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        Depth
+    </a>
+</nav>
+      
 
 <!-- Main Content -->
 {% block body %}{% endblock %}

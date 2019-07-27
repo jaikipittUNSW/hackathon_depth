@@ -12,11 +12,23 @@
                     </div>
                     <div class="card-body">
                         <!-- <h5 class="card-title">{{conversation}}</h5> -->
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table>
+                            <tr>
+                                <td width=40%>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                </td>
+                                <td width=20%></td>
+                                <td width=40%>
+                                    <div>
+                                        <button type="button" class="btn btn-success">I Found This Helpful</button>
+                                        <button type="button" class="btn btn-danger">This Changed My Mind</button>                
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
                         <div class="card">
                                 <a class="btn btn-light" href="{{ url_for('CommentDetail', category=category, conversation=conversation) }}">Comments</a>
-                                <button type="button" class="btn btn-success">I Found This Helpful</button>
-                            <button type="button" class="btn btn-danger">This Changed My Mind</button>                
                         </div>
                     </div>
                 </div>
