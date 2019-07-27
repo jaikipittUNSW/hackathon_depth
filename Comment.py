@@ -44,6 +44,9 @@ class Comment():
                     break
         return comment
 
+    def getChildrenComments(self):
+        return self.child
+
     def getText(self):
         return self.comment
 
