@@ -6,31 +6,34 @@ import Comment
 class System():
 
     def __init__(self):
-        self.posts = None
-        self.users = None
+        self.posts = []
+        self.users = []
         self.categories = {"Books": []}
         self.postID = 0
 
     def makeNewPost(self, title, post, user):
-        post = Post(self.postID, titel, post, user)
-        self.postID++
+        post = Post.Post(self.postID, title, post, user)
+        self.postID +=1
         return post
 
     def addNewUser(self, name, password):
-        self.users.append(User(name, password))
+        self.users.append(User.User(name, password))
 
     def addNewPost(self, title,  post, user, categories):
         nPost = self.makeNewPost(title, post, user)
+        self.posts.append(nPost)
         for category in categories:
-            self.categories[categories].append(nPost)
+            if category in self.categories:
+                self.categories[category].append(nPost)
+        return self.postID - 1
 
     def commentOnPost(self, postID, comment, user):
-        self.commentOnPost(postID, 0, comment, user)
+        self.commentOnComment(postID, 0, comment, user)
 
-    def commentOnCommnet(self, postID, commentID comment, user):
+    def commentOnComment(self, postID, commentID, comment, user):
         for post in self.posts:
             if (post.isPost(postID)):
-                post.addNewCommnets(commentID, comment, user)
+                post.addComments(commentID, comment, user)
                 break
 
     def getPost(self, id):
@@ -42,16 +45,19 @@ class System():
                     break
         return post
 
-    def showPost(self, id):
-        for post in self.posts:
-            if post.isPost(id):
-                return post
-
     def showCategoryPosts(self, categories):
-        return self.categories[categories]
+        return self.categories[categories] if categories in self.categories else None
 
     def getAllPosts(self):
         posts = []
-        for post in self.post:
-            posts.append(post.getPostval())
+        for post in self.posts:
+            posts.append(post.getPostVal())
         return posts
+
+    def login(self, name, password):
+        user = None
+        for users in self.users:
+            if (users.login(name, password)):
+                user = users
+                break
+        return user

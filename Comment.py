@@ -2,15 +2,13 @@ import Post
 import User
 
 class Comment():
-    
-    def __init__(self, id):
-        self.child = []
-        self.id = id
 
     def __init__(self, id, user, comment):
-        self.__init__()
+        self.child = []
+        self.id = id
         self.user = user
         self.comment = comment
+        self.child = []
 
     def addComment(self, comment):
         self.comment = comment
@@ -27,7 +25,7 @@ class Comment():
     def addChildComment(self, id, comment):
         flag = (self.id == id)
         if (flag):
-            self.child.append(commnet)
+            self.child.append(comment)
         else:
             for comment in self.child:
                 flag = comment.addChildComment(id, comment)
@@ -35,8 +33,19 @@ class Comment():
                     break
         return flag
 
+    def getComment(self, id):
+        comment = None
+        if id == self.id:
+            comment = self
+        else:
+            for comments in self.child:
+                comment = comments.getComment(id)
+                if comment != None:
+                    break
+        return comment
+
     def getText(self):
-        return self.commnet
+        return self.comment
 
     def getUser(self):
         return self.user

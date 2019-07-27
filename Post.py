@@ -1,8 +1,7 @@
 import Comment
 
-class post():
-
-    def __init__(self, id):
+class Post():
+    def __init__(self, id, title, post, user):
         self.id = id
         self.commentID = 1
         self.categories = []
@@ -10,9 +9,6 @@ class post():
         self.comments = []
         self.changeList = []
         self.usefulList = []
-
-    def __init__(self, id, title, post, user):
-        self.__init__(id)
         self.title = title
         self.post = post
         self.user = user
@@ -27,19 +23,37 @@ class post():
         self.user = user
 
     def addComments(self, id, comment, user):
-        flag = false
+        flag = False
         if (id < self.commentID):
-            for child in self.comments:
-                flag = child.addChildComments(id, comment)
-                if (flag):
-                    break;
+            newComment = Comment.Comment(self.commentID, user, comment)
+            if (id == 0):
+                self.comments.append(newComment)
+                self.commentID += 1
+            else:
+                for child in self.comments:
+                    flag = child.addChildComment(id, newComment)
+                    if (flag):
+                        self.commentID += 1
+                        break;
         return flag
+
+    def getComment(self, id):
+        comment = None
+        if id < self.commentID:
+            for comments in self.comments:
+                comment = comments.getComment(id)
+                if comment != None:
+                    break
+        return comment
 
     def getText(self):
         return self.post
 
     def getUser(self):
         return self.user
+
+    def getUserName(self):
+        return self.user.getName()
 
     def addChange(self, user):
         self.changeList.append(user)
@@ -48,7 +62,7 @@ class post():
         self.usefulList.append(user)
 
     def getPostVal(self):
-        return {"id": self.id, "ChangeMyMind": len(self.changeList), "FoundThisUseful": len(self.useful)}
+        return {"id": self.id, "ChangeMyMind": len(self.changeList), "FoundThisUseful": len(self.usefulList)}
 
     def isPost(self, id):
         return self.id == id

@@ -1,10 +1,6 @@
 
 class User():
 
-    def __init__(self):
-        self.name = ""
-        self.password = None
-
     def __init__(self, name, password):
         self.name = name
         self.password = password
@@ -13,8 +9,8 @@ class User():
         if self.login(old):
             self.password = new
 
-    def login(self, password):
-        return self.password == password
+    def login(self, name, password):
+        return self.password == password and self.name == name
 
     def setname(self, name):
         self.name = name
