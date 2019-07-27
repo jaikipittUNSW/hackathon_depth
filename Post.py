@@ -49,6 +49,9 @@ class Post():
     def getComments(self):
         return self.comments
 
+    def getTitle(self):
+        return self.title
+
     def getText(self):
         return self.post
 
