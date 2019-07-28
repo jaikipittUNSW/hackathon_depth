@@ -9,24 +9,39 @@ class System():
     def __init__(self):
         self.posts = []
         self.users = []
-        self.categories = {"Books": [], "Films": [], "News": [], "Sports": [],
+        self.categories = {"_Books": [], "_Films": [], "_News": [], "Sports": [],
         "Arts": [], "History": []}
         self.postID = 0
 
     def makeNewPost(self, title, post, user):
-        self = updateYoAss()
         post = Post.Post(self.postID, title, post, user)
         self.postID +=1
         self.save()
         return post
 
+    def getCategories(self):
+        res = list()
+        for category in self.categories:
+            if (category[0] != "_"):
+                res.append(category)
+
+        return res
+
+    def getBestOfCategories(self):
+        res = list()
+        for category in self.categories:
+            if (category[0] == "_"):
+                temp = category
+                temp = temp.replace("_","")
+                res.append(temp)
+
+        return res
+
     def addNewUser(self, name, password):
-        self = updateYoAss()
         self.users.append(User.User(name, password))
         self.save()
 
     def addNewPost(self, title,  post, user, categories):
-        self = updateYoAss()
         nPost = self.makeNewPost(title, post, user)
         self.posts.append(nPost)
         for category in categories:
@@ -36,12 +51,10 @@ class System():
         return self.postID - 1
 
     def commentOnPost(self, postID, comment, user):
-        self = updateYoAss()
         self.commentOnComment(postID, 0, comment, user)
         self.save()
 
     def commentOnComment(self, postID, commentID, comment, user):
-        self = updateYoAss()
         for post in self.posts:
             if (post.isPost(postID)):
                 post.addComments(commentID, comment, user)
@@ -50,13 +63,11 @@ class System():
         self.save()
 
     def getComments(self, postID):
-        self = updateYoAss()
-        post = getPost(postID)
+        post = self.getPost(postID)
         return post.getComments()
         self.save()
 
     def getPost(self, id):
-        self = updateYoAss()
         post = None
         if (id < self.postID):
             for posts in self.posts:
@@ -71,7 +82,6 @@ class System():
         return self.categories[categories] if categories in self.categories else None
 
     def getAllPosts(self):
-        self = updateYoAss()
         posts = []
         for post in self.posts:
             posts.append(post.getPostVal())
@@ -79,7 +89,6 @@ class System():
         return posts
 
     def login(self, name, password):
-        self = updateYoAss()
         user = None
         for users in self.users:
             if (users.login(name, password)):
@@ -93,14 +102,14 @@ class System():
         pickle.dump(self, f)
         f.close()
 
-def updateYoAss():
-    f = open("system.pickle", "rb")
-    try:
-        sys = pickle.load(f)
-    except EOFError:
-        sys = System()
-    f.close()
-    return sys
+    def updateSystem(self):
+        f = open("system.pickle", "rb")
+        try:
+            sys = pickle.load(f)
+        except EOFError:
+            sys = System()
+        f.close()
+        return sys
 
 
 
