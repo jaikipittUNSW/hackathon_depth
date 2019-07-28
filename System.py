@@ -11,6 +11,7 @@ class System():
         self.categories = {"Books": [], "Films": [], "News": [], "Sports": [],
         "Arts": [], "History": []}
         self.postID = 0
+        self.addNewUser("test", "test")
 
     def makeNewPost(self, title, post, user):
         post = Post.Post(self.postID, title, post, user)
@@ -38,11 +39,13 @@ class System():
                 break
 
     def getComments(self, postID):
-        post = getPost(postID)
-
-        return post.getComments()
+        post = self.getPost(postID)
+        if post != None:
+            return post.getComments()
+        return None
 
     def getPost(self, id):
+        id = int(id)
         post = None
         if (id < self.postID):
             for posts in self.posts:
