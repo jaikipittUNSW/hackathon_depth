@@ -4,6 +4,7 @@ from flask import render_template, request, redirect, url_for, abort
 from Comment import Comment
 from User import User
 import System
+from System import updateSystem
 
 system = System.System()
 
@@ -13,10 +14,7 @@ def landing():
 
 @app.route('/', methods=["GET", "POST"])
 def home():
-    if system == None:
-        system = System.System()
-    else:
-        system = system.updateSystem()
+    system = updateSystem()
     categories = system.getCategories()
     bestOfCategories = system.getBestOfCategories()
     return render_template('home.html', categories=categories, bestOfCategories=bestOfCategories)
@@ -24,14 +22,14 @@ def home():
 
 @app.route('/best/<subject>', methods=["GET", "POST"])
 def BestOfDetail(subject):
-    system = system.updateSystem()
+    system = updateSystem()
     bestOfs= system.showCategoryPosts(ubject)
 
     return render_template("bestOfDetail.html", category=subject, bestOfs=bestOfs)
 
 @app.route('/conversations/<category>', methods=["GET", "POST"])
 def ConversationDetail(category):
-    system = system.updateSystem()
+    system = updateSystem()
 
     conversations= system.showCategoryPosts(category)
     return render_template("conversationDetail.html", category=category, conversations=conversations)
@@ -53,7 +51,7 @@ def postForm():
 
 @app.route('/conversations/<category>/<conversation>', methods=["GET", "POST"])
 def CommentDetail(category, conversation):
-    system = system.updateSystem()
+    system = updateSystem()
 
     comments = system.getComments(conversation)
     return render_template("commentDetail.html", comments=comments)

@@ -8,14 +8,14 @@
             {% for conversation in conversations%}
                 <div class="card">
                     <div class="card-header">
-                    {{conversation}}
+                    {{conversation.getTitle()}}
                     </div>
                     <div class="card-body">
                         <!-- <h5 class="card-title">{{conversation}}</h5> -->
                         <table>
                             <tr>
                                 <td width=40%>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <p class="card-text">{{conversation.getText()}}</p>
                                 </td>
                                 <td width=20%></td>
                                 <td width=40%>
