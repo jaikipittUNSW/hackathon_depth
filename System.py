@@ -10,7 +10,7 @@ class System():
         self.posts = []
         self.users = []
         self.categories = {"_Books": [], "_Films": [], "_News": [], "Sports": [],
-        "Arts": [], "History": []}
+        "Arts": [], "Philosophy": [], "Politics": []}
         self.postID = 0
         self.addNewUser("test", "test")
 
@@ -106,14 +106,15 @@ class System():
         pickle.dump(self, f)
         f.close()
 
-    def updateSystem(self):
-        f = open("system.pickle", "rb")
-        try:
-            sys = pickle.load(f)
-        except EOFError:
-            sys = System()
-        f.close()
-        return sys
+def updateSystem():
+    f = open("system.pickle", "rb")
+    try:
+        sys = pickle.load(f)
+    except EOFError:
+        sys = System()
+    f.close()
+    return sys
+
 
 
 

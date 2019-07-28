@@ -3,15 +3,146 @@
 <html lang="en">
     <body>
         <div class="container">
-            <h2>Best Of</h2>
-            {% for category in bestOfCategories%}                  
-                <a href="{{ url_for('BestOfDetail', subject=category) }}"><button type="button" class="btn btn-light">{{category}}</button></a>
-            {% endfor %}
-    
-            <h2>Conversations</h2>
-            {% for category in categories%}
-                <a href="{{ url_for('ConversationDetail', category=category) }}"><button type="button" class="btn btn-light">{{category}}</button></a>
-            {% endfor %}
+        <p style="text-align:center;">
+                <img align="middle" src="static/Landing.png" alt="Avatar" width="1200px">
+                </p>
+                <table border="0" align="center">
+                
+                    <tr><td>
+                    
+                    <a align="center" href="{{ url_for('ConversationDetail', category='Politics') }}">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/4.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Politics</h1> 
+                            <p>Discuss politics</p> 
+                            <p>Left and right alike!</p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                </td><td>
+                    
+                    <a align="center" href="{{ url_for('ConversationDetail', category='Philosophy') }}">
+                        <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/2.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Philosophy</h1> 
+                            <p>Discuss your favourite Philosophy</p> 
+                            <p>Fire and ice alike!</p>
+                        </div>
+                        </div>
+                    </a>
+                </div>
+                
+                
+                </td><td>
+                        <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/3.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Oceans</h1> 
+                            <p>Discuss your favourite Oceans</p> 
+                            <p>Pacific and Atlantic alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </td><td>
+                    
+                        <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/1.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Trees</h1> 
+                            <p>Discuss your favourite trees</p> 
+                            <p>Pine and birch alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </td></tr><tr><td>
+                    
+                    <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/5.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Monks</h1> 
+                            <p>Discuss your favourite monks</p> 
+                            <p>Kung Fu Panda and Buddha alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </td><td>
+                
+                    <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/6.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Flowers</h1> 
+                            <p>Discuss your favourite flowers</p> 
+                            <p>Lotus and Rose alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                </td><td>
+                    
+                    <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/7.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Cats</h1> 
+                            <p>Discuss your favourite cats</p> 
+                            <p>Lions and housecats alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </td><td>
+                    
+                    <div align="center">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="static/8.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>Gardens</h1> 
+                            <p>Discuss your favourite Gardens</p> 
+                            <p>Zen and Cacti alike!</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </td></tr></table>
+                    
         </div>
     </body>
 </html>
