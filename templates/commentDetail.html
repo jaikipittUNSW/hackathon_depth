@@ -3,9 +3,35 @@
 <html lang="en">
     <body>
         <div class="container">
-            {% for comment in comments%}
-                { % %}
-            { % endfor%}
+            <div class="page-header">
+                <h1><small class="pull-right">{{comments|length}} Comments</small> Comments </h1>
+            </div> 
+            <div class="comments-list">
+                {% for comment in comments %}
+                    <div class="media">
+                        <div class="media-body">
+                            
+                            <h4 class="media-heading user_name">{{comment.getUserName()}}</h4>
+                            {{comment.getText()}}
+                            <p class="pull-right" align="right"><small>0 days ago</small></p>
+                            
+                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                    </div>
+                    {% for reply in comment.getChildrenComments() %}
+                        <div class="media">
+                            <div class="media-body">               
+                                <h4 class="media-heading user_name">{{reply.getUserName()}}</h4>
+                                <i>Reply To {{comment.getUserName()}}</i>
+                                <br/>
+                                {{comment.getText()}}
+                                <p class="pull-right" align="right"><small>0 days ago</small></p>
+                                <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </body>
 </html>

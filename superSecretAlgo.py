@@ -10,7 +10,7 @@ def superSecretAlgo(dict, n):
         for y in dict:
             if x.get() > maxval:
                 maxval = x.get()
-            
+
 
 
 return
