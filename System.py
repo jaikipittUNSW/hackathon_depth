@@ -10,7 +10,7 @@ class System():
         self.posts = []
         self.users = []
         self.categories = {"_Books": [], "_Films": [], "_News": [], "Sports": [],
-        "Arts": [], "History": []}
+        "Arts": [], "Philosophy": [], "Politics": []}
         self.postID = 0
 
     def makeNewPost(self, title, post, user):
